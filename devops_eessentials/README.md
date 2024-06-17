@@ -1,0 +1,1 @@
+This repo contains work on the basics of Docker. As an alternative to virtual machine, Docker is a more efficientway of handling versioning in pur applications.
