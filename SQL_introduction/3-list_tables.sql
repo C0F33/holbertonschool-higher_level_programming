@@ -1,3 +1,3 @@
---ALLTABLES
---ALL OF THEM
+--show all tables
+--in mysql
 SHOW TABLES;
