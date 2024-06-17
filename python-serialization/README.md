@@ -1,0 +1,1 @@
+This Directory contains work on basic serialization from python to json to xml and all the above.
