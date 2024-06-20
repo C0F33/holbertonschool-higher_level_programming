@@ -16,7 +16,7 @@ if __name__ == "__main__":
 	cursor = db.cursor()
 	cursor.execute("SELECT * FROM states ORDER BY id ASC")
 	data = cursor.fetchall()
-	for state in data:
-		print(state)
+	for row in rows:
+		print(row)
 
 	db.close()
