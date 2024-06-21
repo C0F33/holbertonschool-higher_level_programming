@@ -2,7 +2,7 @@
 from sys import argv
 import MySQLdb
 
-
+"""This script lists all states starting with 'N' from the database hbtn_0e_0_usa"""
 
 if __name__ == "__main__":
 		# Establish a connection to the database
