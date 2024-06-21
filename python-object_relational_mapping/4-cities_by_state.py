@@ -1,21 +1,18 @@
 #!/usr/bin/python3
-# Lists all cities of the database hbtn_0e_4_usa, ordered by city id.
+""" script that lists al cities  """
 
-import sys
 import MySQLdb
-
-def list_cities_by_state():
-	"""
-	Lists all cities of the database hbtn_0e_4_usa, ordered by city id.
-	"""
-	db = MySQLdb.connect(user=sys.argv[1], passwd=sys.argv[2], db=sys.argv[3])
-	cursor = db.cursor()
-	cursor.execute("SELECT `c`.`id`, `c`.`name`, `s`.`name` \
-				 FROM `cities` as `c` \
-				INNER JOIN `states` as `s` \
-				   ON `c`.`state_id` = `s`.`id` \
-				ORDER BY `c`.`id`")
-	[print(city) for city in cursor.fetchall()]
+from sys import argv
 
 if __name__ == "__main__":
-	list_cities_by_state()
+
+    db = MySQLdb.connect(host='localhost', port=3306, user=argv[1],
+                         passwd=argv[2], db=argv[3], charset='utf8')
+    cursor = db.cursor()
+    cursor.execute("SELECT cities.id, cities.name, states.name FROM cities,\
+        states WHERE states.id=state_id")
+    table = cursor.fetchall()
+    for row in table:
+        print(row)
+    cursor.close()
+    db.close()
