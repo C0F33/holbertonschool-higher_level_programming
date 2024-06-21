@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-''' This is a docstring for'''
+''' This is a docstr ing for'''
 from sqlalchemy import create_engine, text
 from sqlalchemy.orm import sessionmaker
 from sys import argv

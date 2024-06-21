@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-''' Filters through states '''
+''' Filters throu gh states '''
 
 from sqlalchemy import create_engine, text
 from sqlalchemy.orm import sessionmaker

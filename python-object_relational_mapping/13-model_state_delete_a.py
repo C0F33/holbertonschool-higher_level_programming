@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-''' Script that deletes all state obj with a name with the
+'''  Script that deletes all state obj with a name with the
 letter a from the database '''
 
 import MySQLdb

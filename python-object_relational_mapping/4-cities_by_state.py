@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-""" script that lists al cities  """
+""" script that lists al cities   """
 
 import MySQLdb
 from sys import argv

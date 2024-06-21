@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-''' Script that changes the name of a state '''
+''' Script t hat changes the name of a state '''
 
 import MySQLdb
 from sys import argv

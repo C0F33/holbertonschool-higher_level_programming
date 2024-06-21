@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-''' fetch first state  '''
+''' fetch  first state  '''
 
 from sqlalchemy import create_engine, text
 from sqlalchemy.orm import sessionmaker

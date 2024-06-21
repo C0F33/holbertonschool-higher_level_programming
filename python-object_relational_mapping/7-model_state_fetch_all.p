@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-''' lists all obj from db '''
+''' lists all obj from d b '''
 
 from sqlalchemy import create_engine, text
 from sqlalchemy.orm import sessionmaker

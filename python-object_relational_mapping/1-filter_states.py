@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-""" Write a script that list all states with the same name starting with N """
+""" Write a script thats list all states with the same name starting with N """
 
 import MySQLdb
 from sys import argv
