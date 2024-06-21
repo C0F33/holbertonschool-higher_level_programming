@@ -1,6 +1,5 @@
 #!/usr/bin/python3
-'''  Script that deletes all state obj with a name with the.
-letter a from the database '''
+''' Script t hat changes the name of a state. '''
 
 import MySQLdb
 from sys import argv
@@ -14,12 +13,11 @@ if __name__ == "__main__":
     Base.metadata.create_all(engine)
     Session = sessionmaker(bind=engine)
     session = Session()
-    rows = session.query(State).from_statement(text(
+    state = session.query(State).from_statement(text(
         "SELECT * "
         "FROM states "
-        "WHERE name REGEXP '^.*a.*' "
-    )).all()
-    for state in rows:
-        session.delete(state)
+        "WHERE id=2 "
+    )).one()
+    state.name = "New Mexico"
     session.commit()
     session.close()

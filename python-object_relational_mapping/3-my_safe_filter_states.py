@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-""" This script is safe from SQL injections  """
+""" This script is safe from SQL injections"""
 
 import MySQLdb
 from sys import argv
