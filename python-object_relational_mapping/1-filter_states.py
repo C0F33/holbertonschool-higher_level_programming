@@ -1,7 +1,7 @@
+#!/usr/bin/python3
 from sys import argv
 import MySQLdb
 
-#!/usr/bin/python3
 
 
 if __name__ == "__main__":
