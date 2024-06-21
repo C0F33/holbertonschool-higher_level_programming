@@ -1,4 +1,6 @@
 #!/usr/bin/python3
+
+"""This module is documented"""
 import MySQLdb
 from sys import argv
 import sys
