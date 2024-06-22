@@ -1,5 +1,4 @@
 #!/usr/bin/python3
-
 """comment this is a string"""
 
 from sqlalchemy import create_engine, text
