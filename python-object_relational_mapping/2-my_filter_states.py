@@ -1,9 +1,9 @@
 #!/usr/bin/python3
+"""Script that takes in an argument and displays all values in the states"""
 import MySQLdb
 from sys import argv
 import sys
 
-"""Script that takes in an argument and displays all values in the states"""
 
 
 if __name__ == "__main__":
