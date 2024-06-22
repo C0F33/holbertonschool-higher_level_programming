@@ -1,34 +1,20 @@
-#!/usr/bin/python3
-"""Nameless module to suck data out from the database
-"""
-import sys
-from model_state import Base, State
+#!/usr/bib/python3
+''' comment is a string'''
+
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
+from sys import argv
+from model_state import State, Base
 
 if __name__ == "__main__":
-    if len(sys.argv) != 5:
-        print("Usage: python script.py <username> <password> <database_name> <state_name>")
-        sys.exit(1)
-
-    username, password, database_name, state_name = sys.argv[1:]
-
-    engine = create_engine(
-        f"mysql+mysqldb://{username}:{password}@localhost/\
-        {database_name}", pool_pre_ping=True,)
-
+    engine = create_engine('mysql+mysqldb://{}:{}@localhost/{}'.format(
+        argv[1], argv[2], argv[3]), pool_pre_ping=True)
     Base.metadata.create_all(engine)
-
     Session = sessionmaker(bind=engine)
     session = Session()
-
-    try:
-        result = session.query(State).filter(State.name == state_name).first()
-        if result:
-            print(result.id)
-        else:
-            print("Not found")
-    except Exception as e:
-        print(f"An error occurred: {e}")
-    finally:
-        session.close()
+    state = session.query(State).filter_by(name=argv[4]).first()
+    if state is not None:
+        print(str(state.id))
+    else:
+        print("Not found")
+    session.close()
