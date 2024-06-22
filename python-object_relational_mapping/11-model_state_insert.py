@@ -1,27 +1,26 @@
 #!/usr/bin/python3
-"""insert state in db"""
-
-from sqlalchemy import create_engine, text
+''' comment '''
+from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from sys import argv
-from model_state import State, Base
-
+from model_state import State
 
 if __name__ == "__main__":
-	user = argv[1]
-	passwd = argv[2]
-	host = 'localhost'
-	db = argv[3]
 
-	engine = create_engine('mysql+mysqldb://\
-                        {}:{}@localhost/{}'.format(user, passwd, db))
-	session = sessionmaker(bind=engine)
-	Session = session()
+    user = argv[1]
+    passwd = argv[2]
+    host = 'localhost'
+    db = argv[3]
 
-	insertState = State(name="Louisiana")
-	Session.add(insertState)
-	Session.commit()
+    engine = create_engine('mysql+mysqldb://\
+                           {}:{}@{}/{}'.format(user, passwd, host, db))
+    session = sessionmaker(bind=engine)
+    Session = session()
 
-	print("{}".format(insertState.id))
+    insertState = State(name="Louisiana")
+    Session.add(insertState)
+    Session.commit()
 
-	Session.close()
+    print("{}".format(insertState.id))
+
+    Session.close()
