@@ -1,7 +1,6 @@
 #!/usr/bin/python3
 ''' Script t hat changes the name of a state. '''
 
-import MySQLdb
 from sys import argv
 from sqlalchemy import create_engine, text
 from sqlalchemy.orm import sessionmaker
