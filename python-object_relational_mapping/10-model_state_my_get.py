@@ -1,4 +1,4 @@
-#!/usr/bib/python3
+#!/usr/bin/python3
 ''' comment is a string'''
 
 from sqlalchemy import create_engine
