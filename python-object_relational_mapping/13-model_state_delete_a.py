@@ -2,7 +2,6 @@
 '''  Script that deletes all state obj with a name with the.
 letter a from the database '''
 
-import MySQLdb
 from sys import argv
 from sqlalchemy import create_engine, text
 from sqlalchemy.orm import sessionmaker
