@@ -1,4 +1,4 @@
-#!/isr/bin/python3
+#!/usr/bin/python3
 """Script that takes in an argument and displays aal values in the states"""
 
 import MySQLdb
