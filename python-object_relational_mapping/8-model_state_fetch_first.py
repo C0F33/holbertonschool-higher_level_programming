@@ -1,10 +1,10 @@
 #!/usr/bin/python3
 """comment this is a string"""
 
-from sqlalchemy import create_engine, text
+import sys
+from model_state import State
+from sqlalchemy import (create_engine)
 from sqlalchemy.orm import sessionmaker
-from sys import sys
-from model_state import State, Base
 
 if __name__ == "__main__":
     engine = create_engine('mysql+mysqldb://{}:{}@localhost/{}'.format(
