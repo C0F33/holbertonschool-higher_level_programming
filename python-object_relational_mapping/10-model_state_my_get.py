@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-''' fetches a  specific name in db .'''
+"""fetches a specific name in db"""
 
 from sqlalchemy import create_engine, text
 from sqlalchemy.orm import sessionmaker
