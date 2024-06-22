@@ -7,21 +7,29 @@ from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 
 if __name__ == "__main__":
+    if len(sys.argv) != 5:
+        print("Usage: python script.py <username> <password> <database_name> <state_name>")
+        sys.exit(1)
+
+    username, password, database_name, state_name = sys.argv[1:]
+
     engine = create_engine(
-        "mysql+mysqldb://{}:{}@localhost/{}".format(
-            sys.argv[1], sys.argv[2], sys.argv[3]
-        ),
+        f"mysql+mysqldb://{username}:{password}@localhost/{database_name}",
         pool_pre_ping=True,
     )
+
+    Base.metadata.create_all(engine)
+
     Session = sessionmaker(bind=engine)
     session = Session()
 
-    state_name = sys.argv[4]
-
-    query = session.query(State).where(State.name == state_name)
-
-    if query.count() == 0:
-        print("Not found")
-    else:
-        row = query.limit(1).one()
-        print("{0}".format(row.id))
+    try:
+        result = session.query(State).filter(State.name == state_name).first()
+        if result:
+            print(result.id)
+        else:
+            print("Not found")
+    except Exception as e:
+        print(f"An error occurred: {e}")
+    finally:
+        session.close()
