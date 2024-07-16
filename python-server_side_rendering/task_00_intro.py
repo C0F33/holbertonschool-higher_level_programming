@@ -1,33 +1,34 @@
 import os
 
 def generate_invitations(template, attendees):
-    # Check input types
+
     if not isinstance(template, str):
-        print("Error: Template should be a string.")
-        return
-    if not isinstance(attendees, list) or not all(isinstance(attendee, dict) for attendee in attendees):
-        print("Error: Attendees should be a list of dictionaries.")
+        print("Error: Template must be a string.")
         return
 
-    # Handle empty inputs
+    if not all(isinstance(attendee, dict) for attendee in attendees):
+        print("Error: Attendees must be in a list of dictionaries.")
+        return
+
     if not template:
         print("Template is empty, no output files generated.")
         return
+
     if not attendees:
         print("No data provided, no output files generated.")
         return
 
-    # Process each attendee
-    for idx, attendee in enumerate(attendees, start=1):
-        processed_template = template
-        for key in ['name', 'event_title', 'event_date', 'event_location']:
-            value = attendee.get(key, "N/A")
-            if value is None:
-                value = "N/A"
-            processed_template = processed_template.replace(f"{{{{ {key} }}}}", value)
-
-        # Generate output file
-        output_filename = f"output_{idx}.txt"
-        with open(output_filename, 'w') as output_file:
-            output_file.write(processed_template)
-        print(f"Generated {output_filename}")
+    for index, attendee in enumerate(attendees, start=1):
+        attendee = attendee.copy()
+        missing_keys = [key for key in ['event_date', 'event_location', 'event_title'] if key not in attendee]
+        for key in missing_keys:
+            print(f"Warning: Replacing missing data '{key}' with 'N/A'.")
+            attendee[key] = "N/A"
+        try:
+            invitation = template.format(**attendee)
+        except KeyError as e:
+            print(f"Warning: Unexpected missing data {e}")
+            attendee[str(e)] = "N/A"
+            invitation = template.format(**attendee)
+        with open(f"output_{index}.txt", "w") as file:
+            file.write(invitation
