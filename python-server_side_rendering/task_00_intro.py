@@ -31,4 +31,4 @@ def generate_invitations(template, attendees):
             attendee[str(e)] = "N/A"
             invitation = template.format(**attendee)
         with open(f"output_{index}.txt", "w") as file:
-            file.write(invitation
+            file.write(invitation)
