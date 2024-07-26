@@ -1,3 +1,9 @@
-document.getElementById('update_header').addEventListener('click', () => {
-    document.querySelector('header').textContent = 'New Header!!!';
-});
+fetch('https://swapi-api.hbtn.io/api/people/5/?format=json')
+    .then(response => response.json())
+    .then(data => {
+        document.getElementById('character').textContent = data.name;
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        document.getElementById('character').textContent = 'Error fetching character';
+    });
